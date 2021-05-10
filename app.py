@@ -19,12 +19,12 @@ from datetime import date
 
 
 
-data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
-data.sort_values("Date", inplace=True)
+#data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
+#data.sort_values("Date", inplace=True)
 
 
-tickers_old = ['AAPL', 'SBER.ME',"AAL","XOM"]
-data_stock = pd.DataFrame(columns=tickers)
+#tickers_old = ['AAPL', 'SBER.ME',"AAL","XOM"]
+#data_stock = pd.DataFrame(columns=tickers)
 
 
 
