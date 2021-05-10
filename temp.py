@@ -232,5 +232,6 @@ def update_charts(avocado_type1,type_1_threshold, start_date1, end_date1,n_click
     
     return figs_1, dendro
 
-if __name__ == '__main__':
-    app.run_server(debug=True, use_reloader=False)
+if __name__ == "__main__":
+    app.run_server(debug=True,
+                   host='127.0.0.1')
