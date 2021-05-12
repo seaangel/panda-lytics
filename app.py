@@ -179,7 +179,6 @@ app.layout = html.Div(
             className="wrapper",
         ),
     ]
-
 )
 
 
