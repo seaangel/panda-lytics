@@ -10,6 +10,11 @@ import plotly.express as px
 import plotly.figure_factory as ff
 from dash.exceptions import PreventUpdate
 from datetime import date
+
+
+import yahoo_fin
+from yahoo_fin.stock_info import *
+
 #data = pd.read_csv("avocado.csv")
 #tic = pd.read_excel("tickers.xlsx")
 #tickers = tic['ticker'].tolist()
@@ -51,8 +56,7 @@ external_stylesheets = [
         "rel": "stylesheet",
     },
 ]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=meta_tags,external_scripts=external_scripts,index_string='<!DOCTYPE html>\n<html>\n    <head>\n <script>блалала</script> \n <script data-ad-client="ca-pub-9614563506451730" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> {%metas%}\n        <title>{%title%}</title>\n        {%favicon%}\n        {%css%}\n    </head>\n    <body>\n        {%app_entry%}\n        <footer>\n            {%config%}\n            {%scripts%}\n            {%renderer%}\n        </footer>\n    </body>\n</html>' )
-
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 server = app.server
 app.title = "Panda Analytics: Choose Your Panda!"
 app.layout = html.Div(
@@ -190,7 +194,7 @@ def update_charts(avocado_type1,type_1_threshold, start_date1, end_date1,n_click
     
     
         for ticker in tickers_q:
-             data_stock_q[ticker] = yf.download(ticker, start_date1, end_date1)['Close']
+             data_stock_q[ticker] = yf.get_data(ticker, start_date1, end_date1)['close']
     #        data_stock_q[ticker] = yf.download(ticker, start_date, end_date)['Close']
         #data_stock_q = data_stock_q.reset_index()
         data_stock_q = data_stock_q.dropna()
