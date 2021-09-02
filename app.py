@@ -35,6 +35,15 @@ meta_tags = [
     
     
     ]
+external_scripts = [    'https://www.google-analytics.com/analytics.js',
+    {'src': 'https://cdn.polyfill.io/v2/polyfill.min.js'},
+    {
+        'src': 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.js',
+        'integrity': 'sha256-Qqd/EfdABZUcAxjOkMi8eGEivtdTkh3b65xCZL4qAQA=',
+        'crossorigin': 'anonymous'
+    }   
+   
+    ]
 external_stylesheets = [
     {
         "href": "https://fonts.googleapis.com/css2?"
