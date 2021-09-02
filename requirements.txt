@@ -3,3 +3,4 @@ pandas
 gunicorn
 yfinance
 scipy
+yahoo_fin
