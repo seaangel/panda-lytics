@@ -10,52 +10,26 @@ import plotly.express as px
 import plotly.figure_factory as ff
 from dash.exceptions import PreventUpdate
 from datetime import date
-
-
 #data = pd.read_csv("avocado.csv")
-
 #tic = pd.read_excel("tickers.xlsx")
-
 #tickers = tic['ticker'].tolist()
-
-
-
 #data["Date"] = pd.to_datetime(data["Date"], format="%Y-%m-%d")
 #data.sort_values("Date", inplace=True)
-
-
 #tickers_old = ['AAPL', 'SBER.ME',"AAL","XOM"]
 #data_stock = pd.DataFrame(columns=tickers)
-
-
-
 type_threshold = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
-
 d = date.today()
 #print(d.year)
-
-
 #for ticker in tickers:
 #    data_stock[ticker] = yf.download(ticker,'2016-01-01','2016-04-30')['Close']
     
 #data_stock = data_stock.dropna()
-
 #print(data_stock)
 #data_stock1 = data_stock
-
 #data_stock1 = data_stock1.dropna()
-
-
-
 #data_stock = data_stock.reset_index()
-
-
-
-
 #fig = px.scatter_matrix(data_stock)
 #fig2 = ff.create_dendrogram(data_stock.corr(), color_threshold=1.5, labels = data_stock.columns)
-
-
 external_stylesheets = [
     {
         "href": "https://fonts.googleapis.com/css2?"
@@ -64,11 +38,8 @@ external_stylesheets = [
     },
 ]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
 server = app.server
-
 app.title = "Panda Analytics: Choose Your Panda!"
-
 app.layout = html.Div(
     children=[
         html.Div(
@@ -91,7 +62,6 @@ app.layout = html.Div(
        
         html.Div(
             children=[
-
                 html.Div(
                     children=[
                         html.Div(children="Select Tickers (min 2)", className="menu-title"),
@@ -157,7 +127,6 @@ app.layout = html.Div(
             ],
             className="menu",
         ),
-
                 html.Div(
             children=[
           
@@ -179,9 +148,16 @@ app.layout = html.Div(
             className="wrapper",
         ),
     ]
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J6LXXTXN59"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J6LXXTXN59');
+</script>
 )
-
-
 
 
 @app.callback(
@@ -197,8 +173,6 @@ app.layout = html.Div(
     ],
    prevent_initial_call=True
 )
-
-
 def update_charts(avocado_type1,type_1_threshold, start_date1, end_date1,n_clicks):
     
     tickers_q = avocado_type1.split(',')
@@ -225,14 +199,12 @@ def update_charts(avocado_type1,type_1_threshold, start_date1, end_date1,n_click
     
    # figs_2 = px.line(data_stock, x="Date", y=region1)
     figs_1 = px.scatter_matrix(data_stock_q)
-
    #data_stock = data_stock1.drop(['Date'], axis = 1)
     
     dendro = ff.create_dendrogram(data_stock_q.corr(),color_threshold=type_1_threshold,labels=data_stock_q.columns)
     
     
     return figs_1, dendro
-
 if __name__ == "__main__":
     app.run_server(debug=True,
                    host='127.0.0.1')
