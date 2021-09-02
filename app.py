@@ -30,6 +30,11 @@ d = date.today()
 #data_stock = data_stock.reset_index()
 #fig = px.scatter_matrix(data_stock)
 #fig2 = ff.create_dendrogram(data_stock.corr(), color_threshold=1.5, labels = data_stock.columns)
+meta_tags = [
+        {'name': 'description', 'content': 'My App',},
+    
+    
+    ]
 external_stylesheets = [
     {
         "href": "https://fonts.googleapis.com/css2?"
