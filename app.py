@@ -186,18 +186,24 @@ app.layout = html.Div(
 def update_charts(avocado_type1,type_1_threshold, start_date1, end_date1,n_clicks):
     
     tickers_q = avocado_type1.split(',')
-    data_stock_q = pd.DataFrame(columns=tickers_q)
     
-    
-    
-    if n_clicks > 0:
-    
-    
-        for ticker in tickers_q:
-             data_stock_q[ticker] = yf.get_data(ticker, start_date1, end_date1)['close']
+    for ticker in tickers_q:
+        data_stock_q[ticker] = get_data(ticker, start_date1, end_date1)['close']
     #        data_stock_q[ticker] = yf.download(ticker, start_date, end_date)['Close']
         #data_stock_q = data_stock_q.reset_index()
-        data_stock_q = data_stock_q.dropna()
+    data_stock_q = data_stock_q.dropna()
+    
+    
+    
+   # if n_clicks > 0:
+    
+    
+      #  for ticker in tickers_q:
+    #         data_stock_q[ticker] = yf.download(ticker, start_date1, end_date1)['Close']
+    #        data_stock_q[ticker] = yf.download(ticker, start_date, end_date)['Close']
+        #data_stock_q = data_stock_q.reset_index()
+        #data_stock_q = data_stock_q.dropna()
+    
     
     n_clicks = 0
     
